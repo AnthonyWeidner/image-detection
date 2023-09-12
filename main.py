@@ -14,7 +14,7 @@ CORS(app)
 
 
 # Load your trained model
-model = tf.keras.models.load_model('test_model_cifar100.keras')
+model = tf.keras.models.load_model('new_test_model_cifar100.keras')
 
 labels = [
     'apple', 'aquarium_fish', 'baby', 'bear', 'beaver', 'bed', 'bee', 'beetle',
