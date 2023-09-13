@@ -121,6 +121,7 @@ def upload_predict():
 def cifar10_predict():
     image_file = request.files['image']  # Get the uploaded image
     if image_file:
+        return "HIHIHI"
         image = Image.open(image_file)
         image = image.resize((32, 32))
         image = np.asarray(image)
