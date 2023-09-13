@@ -65,7 +65,8 @@ CORS(app)
 models = {
     'model1': tf.keras.models.load_model('new_test_model_cifar100.keras'),
     'model2': tf.keras.models.load_model('complex_test_model2_cifar100.keras'),
-    'model3': tf.keras.models.load_model('simple_test_model4_cifar100.keras')
+    'model3': tf.keras.models.load_model('simple_test_model4_cifar100.keras'),
+    'model4': tf.keras.models.load_model('cifar10_test_model5.keras')
 }
 
 

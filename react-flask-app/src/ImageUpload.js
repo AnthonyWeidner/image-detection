@@ -71,6 +71,7 @@ function ImageUpload() {
           <option value="model1">Model 1 (Standard CNN)</option>
           <option value="model2">Model 2 (Heavy layers)</option>
           <option value="model3">Model 3 (Simple)</option>
+          <option value="model4">Model 4 (Trained on CIFAR-10)</option>
         </select>
 
         <input type="file" onChange={e => setFile(e.target.files[0])} />
