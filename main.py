@@ -69,6 +69,14 @@ models = {
     'model3': tf.keras.models.load_model('simple_test_model4_cifar100.keras')
 }
 
+
+cifar10_model = tf.keras.models.load_model('new_test_model_cifar100.keras')
+
+# Labels for CIFAR-10
+cifar10_labels = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
+
+
 labels = [
     'apple', 'aquarium_fish', 'baby', 'bear', 'beaver', 'bed', 'bee', 'beetle',
     'bicycle', 'bottle', 'bowl', 'boy', 'bridge', 'bus', 'butterfly', 'camel',
@@ -107,6 +115,23 @@ def upload_predict():
             prediction = models[selected_model].predict(image).argmax()
             return str(labels[prediction])
     return render_template('upload.html')
+
+
+@app.route('/predict/cifar10', methods=['POST'])
+def cifar10_predict():
+    image_file = request.files['image']  # Get the uploaded image
+    if image_file:
+        image = Image.open(image_file)
+        image = image.resize((32, 32))
+        image = np.asarray(image)
+        image = np.expand_dims(image, axis=0)
+
+        # Predict using the provided model
+        prediction = cifar10_model.predict(image).argmax()
+        return str(labels[prediction])
+
+    return "Failed", 400  
+
 
 if __name__ == '__main__':
     app.run(debug=True)
