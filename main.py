@@ -117,7 +117,7 @@ def upload_predict():
     return render_template('upload.html')
 
 
-@app.route('/predict/cifar10', methods=['POST'])
+@app.route('/cifar10', methods=['POST'])
 def cifar10_predict():
     image_file = request.files['image']  # Get the uploaded image
     if image_file:
@@ -130,7 +130,7 @@ def cifar10_predict():
         prediction = cifar10_model.predict(image).argmax()
         return str(labels[prediction])
 
-    return "Failed", 400  
+    return "Failed", 400
 
 
 if __name__ == '__main__':
