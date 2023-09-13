@@ -113,6 +113,10 @@ def upload_predict():
 
             # Predict using the selected model
             prediction = models[selected_model].predict(image).argmax()
+            
+            if selected_model == 'model4':
+                return str(cifar10_labels[prediction])
+
             return str(labels[prediction])
     return render_template('upload.html')
 
