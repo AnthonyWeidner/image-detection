@@ -41,6 +41,13 @@ function App() {
       </header>
     </div>
 
+    <div className="App">
+      <header className="App-header">
+        <h1>Image Classifier CIFAR-10</h1>
+        <ImageUpload />
+      </header>
+    </div>
+
 
   );
 }
