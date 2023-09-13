@@ -36,14 +36,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Image Classifier</h1>
+        <h1>Image Classifier CIFAR-100</h1>
         <ImageUpload />
       </header>
-
-      <header className="App-header">
-        <h1>ECS 170 Project</h1>
-       </header>
-
     </div>
 
 
