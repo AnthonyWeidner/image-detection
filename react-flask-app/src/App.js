@@ -26,6 +26,10 @@ function App() {
 export default App;
 */
 
+
+
+
+/**
 // App.js
 
 import React from 'react';
@@ -43,6 +47,37 @@ function App() {
         </div>
       </>
 
+  );
+}
+
+export default App;
+*/
+
+
+
+
+// App.js
+
+import React from 'react';
+import './App.css';
+import ImageUpload from './ImageUpload';
+import CIFAR10Upload from './CIFAR10Upload';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Image Classifier</h1>
+
+        <h2>CIFAR-100</h2>
+        <ImageUpload />
+
+        <hr />
+
+        <h2>CIFAR-10</h2>
+        <CIFAR10Upload />
+      </header>
+    </div>
   );
 }
 
