@@ -48,7 +48,7 @@ function App() {
             <ImageUpload />
           </header>
         </div>
-      <>
+      </>
 
   );
 }
