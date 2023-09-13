@@ -1,5 +1,5 @@
 
-
+"""
 from flask import Flask, render_template, request
 import numpy as np
 import tensorflow as tf
@@ -45,6 +45,51 @@ def upload_predict():
             image = np.asarray(image)
             image = np.expand_dims(image, axis=0)
             prediction = model.predict(image).argmax()  # Predict the category
+            return str(labels[prediction])
+    return render_template('upload.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+"""
+
+from flask import Flask, render_template, request
+import numpy as np
+import tensorflow as tf
+from PIL import Image
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+# Load multiple models
+models = {
+    'model1': tf.keras.models.load_model('new_test_model_cifar100.keras'),
+    # You can load more models like:
+    'model2': tf.keras.models.load_model('new_test_model_cifar100.keras'),
+}
+
+labels = [
+    # ... [your labels here]
+]
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_predict():
+    if request.method == 'POST':
+        image_file = request.files['image']  # Get the uploaded image
+        selected_model = request.form.get('model', 'model1')  # Get the selected model identifier. Default to 'model1'.
+
+        # Check if the model is available
+        if selected_model not in models:
+            return "Invalid model selected", 400
+
+        if image_file:
+            image = Image.open(image_file)
+            image = image.resize((32, 32))
+            image = np.asarray(image)
+            image = np.expand_dims(image, axis=0)
+
+            # Predict using the selected model
+            prediction = models[selected_model].predict(image).argmax()
             return str(labels[prediction])
     return render_template('upload.html')
 
