@@ -64,13 +64,12 @@ CORS(app)
 # Load multiple models
 models = {
     'model1': tf.keras.models.load_model('new_test_model_cifar100.keras'),
-    # You can load more models like:
     'model2': tf.keras.models.load_model('complex_test_model2_cifar100.keras'),
     'model3': tf.keras.models.load_model('simple_test_model4_cifar100.keras')
 }
 
 
-cifar10_model = tf.keras.models.load_model('new_test_model_cifar100.keras')
+
 
 # Labels for CIFAR-10
 cifar10_labels = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
@@ -117,6 +116,7 @@ def upload_predict():
     return render_template('upload.html')
 
 
+"""
 @app.route('/cifar10', methods=['POST'])
 def cifar10_predict():
     image_file = request.files['image']  # Get the uploaded image
@@ -132,7 +132,7 @@ def cifar10_predict():
         return str(labels[prediction])
 
     return "Failed", 400
-
+"""
 
 if __name__ == '__main__':
     app.run(debug=True)
